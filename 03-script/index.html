@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS 交互练习</title>
+    <style>
+      body {
+        font-family: "Microsoft YaHei", sans-serif;
+        background: #f5f7fa;
+        margin: 0;
+        padding: 40px;
+      }
+      h1 {
+        color: #2c3e50;
+        border-left: 6px solid #42b983;
+        padding-left: 12px;
+      }
+      #msg {
+        font-size: 20px;
+        color: #42b983;
+        margin: 20px 0;
+      }
+      button {
+        background: #42b983;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #369870;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JS 交互练习</h1>
+    <p>点下面的按钮,让网页"动起来"。</p>
+
+    <p id="msg">还没点按钮</p>
+    <button onclick="addCount()">点我一下</button>
+
+    <script>
+      // 这是一个计数器,初始为 0
+      let count = 0;
+
+      function addCount() {
+        count = count + 1;
+        // 把 id="msg" 的元素文字改掉
+        document.getElementById("msg").innerText =
+          "你点了 " + count + " 下";
+      }
+    </script>
+  </body>
+</html>
