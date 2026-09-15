@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>表单练习：收集用户输入</title>
+    <style>
+      body {
+        font-family: "Microsoft YaHei", sans-serif;
+        background: #f5f7fa;
+        margin: 0;
+        padding: 40px;
+      }
+      h1 {
+        color: #2c3e50;
+        border-left: 6px solid #42b983;
+        padding-left: 12px;
+      }
+      form {
+        display: flex;
+        gap: 8px;
+        margin: 20px 0;
+      }
+      input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      button {
+        background: #42b983;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #369870;
+      }
+      li {
+        margin: 6px 0;
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>我的清单</h1>
+
+    <form id="add-form">
+      <input id="text-input" type="text" placeholder="写点什么，然后点添加" />
+      <button type="submit">添加</button>
+    </form>
+
+    <ul id="list">
+      <li>示例：先输入一句话试试</li>
+    </ul>
+
+    <script>
+      const form = document.getElementById("add-form");
+      const input = document.getElementById("text-input");
+      const list = document.getElementById("list");
+
+      // 监听表单的"提交"动作（点提交按钮 或 在输入框按回车 都会触发）
+      form.addEventListener("submit", function (event) {
+        // 阻止表单默认行为（不阻止的话页面会刷新）
+        event.preventDefault();
+
+        // 拿到输入框里的文字并去掉首尾空格
+        const text = input.value.trim();
+
+        // 空内容就什么都不做
+        if (text === "") {
+          return;
+        }
+
+        // 新建一个 <li>，文字就是用户输入的内容
+        const item = document.createElement("li");
+        item.innerText = text;
+        list.appendChild(item);
+
+        // 清空输入框，并把光标还回去，方便继续输入
+        input.value = "";
+        input.focus();
+      });
+    </script>
+  </body>
+</html>
